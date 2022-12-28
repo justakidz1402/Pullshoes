@@ -14,10 +14,18 @@
     height: 100px;
     display: flex;
     justify-content: space-around;
-    padding: 20px;
+    padding: 30px;
 }
 
-
+.logoKidz a h1 span{
+    display: block;
+    font-size: .3em;
+    text-transform: capitalize;
+    letter-spacing: 7px;
+    padding-left: 4px;
+    text-align: center;
+    margin-top: 0.5em;
+}
 
 /* binhminh */
 
