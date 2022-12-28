@@ -9,6 +9,12 @@
     -moz-box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+
+:root {
+    --main-color: #3c43a4;
+    --text-color: #ff5063;
+}
+
 /* duc */
 .headerKidz{
     height: 100px;
@@ -26,6 +32,8 @@
     text-align: center;
     margin-top: 0.5em;
 }
+
+
 
 /* binhminh */
 
