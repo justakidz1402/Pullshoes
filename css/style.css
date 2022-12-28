@@ -33,7 +33,68 @@
     margin-top: 0.5em;
 }
 
+.categoryKidz{
+    margin-top: 20px;
+    background-color: var(--main-color);
+    padding: 20px;
+}
 
+.categoryKidz ul li{
+    padding: 0 70px;
+}
+
+.categoryKidz ul{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.categoryKidz ul li a{
+    color: white;
+}
+
+.bannerKidz{
+    background: url(../image/duc/home/b1.jpg) no-repeat center 0px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    min-height: 700px;
+    position: absolute;
+    width: 100%;
+}
+
+.bannerDesKidz{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: 170px;
+    position: relative;
+    margin-top: 290px;
+}
+
+.bannerDesKidz h3{
+    font-size: 2em;
+    color: #fff;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    text-transform: uppercase;
+    width: 40%;
+    margin: 0 0 0;
+    padding: 1em .5em;
+    background: rgba(33, 33, 33, 0.85);
+}
+
+.bannerDesKidz h3 span{
+    display: block;
+    color: #ff5063;
+    margin: 1em 0 0 2em;
+    position: relative;
+}
 
 /* binhminh */
 
