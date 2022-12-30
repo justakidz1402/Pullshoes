@@ -62,7 +62,6 @@
     -o-background-size: cover;
     -ms-background-size: cover;
     min-height: 700px;
-    position: absolute;
     width: 100%;
 }
 
@@ -72,7 +71,7 @@
     margin-right: auto;
     margin-left: 170px;
     position: relative;
-    margin-top: 290px;
+    top: 290px;
 }
 
 .bannerDesKidz h3{
@@ -96,6 +95,66 @@
     margin: 1em 0 0 2em;
     position: relative;
 }
+
+.footerKidz{
+    min-height: 200px;
+    width: 100%;
+}
+
+.newsLetter{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 130px;
+    background-color: var(--main-color);
+}
+
+.NLDesKidz h1, .NLDesKidz span{
+    color: #fff;
+    padding: 5px 0;
+}
+
+.NLDesKidz span{
+    display: block;
+    font-size: .3em;
+    text-transform: capitalize;
+    margin-top: 0.5em;
+    font-size: 0.4em;
+    font-weight: lighter;
+}
+
+.NLDesKidz, .NDInputKidz{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.NDInputKidz input{
+    outline: none;
+    padding: 10px;
+    color: #212121;
+    font-size: 14px;
+    width: 50%;
+    background: #fff;
+    border: none;
+    float: left;
+    height: 40px;
+}
+
+.NDInputKidz button{
+    outline: none;
+    padding: 9px 0;
+    width: 6%;
+    background-color: var(--text-color);
+    border: none;
+    height: 40px;
+    text-align: center;
+    align-items: center;
+}
+
+
 
 /* binhminh */
 
