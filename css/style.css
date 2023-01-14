@@ -799,3 +799,7 @@ a:hover {
     height: auto;
     background: #0c0116;
 }
+
+.activeTabKidz {
+    color:#ff4e5b;
+}
