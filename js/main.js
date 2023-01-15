@@ -47,6 +47,26 @@ let listProduct = [
             price: "90",
             image: "images/shoes-img9.png",
         },
+        {
+            productName: "Sports Shoes",
+            price: "70",
+            image: "images/shoes-img7.png",
+        },
+        {
+            productName: "Sports Shoes",
+            price: "70",
+            image: "images/shoes-img7.png",
+        },
+        {
+            productName: "Sports Shoes",
+            price: "70",
+            image: "images/shoes-img7.png",
+        },
+        {
+            productName: "Sports Shoes",
+            price: "70",
+            image: "images/shoes-img7.png",
+        },
 ];
 
 for (let i = 0; i < listProduct.length; i++) {
