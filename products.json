@@ -1,0 +1,52 @@
+[
+  {
+    "productName": "Best Shoes",
+    "price": 60,
+    "image": "images/shoes-img4.png"
+  },
+  {
+    "productName": "Best Shoes",
+    "price": "400",
+    "image": "images/shoes-img5.png"
+  },
+  {
+    "productName": "Best Shoes",
+    "price": "50",
+    "image": "images/shoes-img6.png"
+  },
+  {
+    "productName": "Sports Shoes",
+    "price": "70",
+    "image": "images/shoes-img7.png"
+  },
+  {
+    "productName": "Sports Shoes",
+    "price": "100",
+    "image": "images/shoes-img8.png"
+  },
+  {
+    "productName": "Sports Shoes",
+    "price": "90",
+    "image": "images/shoes-img9.png"
+  },
+  {
+    "productName": "Sports Shoes",
+    "price": "70",
+    "image": "images/shoes-img7.png"
+  },
+  {
+    "productName": "Sports Shoes",
+    "price": "70",
+    "image": "images/shoes-img7.png"
+  },
+  {
+    "productName": "Sports Shoes",
+    "price": "70",
+    "image": "images/shoes-img7.png"
+  },
+  {
+    "productName": "Sports Shoes",
+    "price": "70",
+    "image": "images/shoes-img7.png"
+  }
+]

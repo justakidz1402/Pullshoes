@@ -33,6 +33,9 @@
 	<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
 </head>
 <!-- body -->
 
@@ -40,29 +43,176 @@
 	<!-- header section start -->
 	<div class="header_section header_main">
 		<div class="container">
-			<div class="row">
+			<div class="row d-flex justify-content-around align-items-center">
 				<div class="col-sm-3">
-					<div class="logo"><a href="#"><img src="images/logo.png"></a></div>
+					<div class="logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
 				</div>
 				<div class="col-sm-9">
-					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<nav class="navbar navbar-expand-lg">
 						<button class="navbar-toggler" type="button" data-toggle="collapse"
 							data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
 							aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
 						<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-							<div class="navbar-nav tabContainer">
-								<div id="homeKidz" class="nav-item nav-link activeTabKidz" onclick="getCategories('homeKidz')">Home</div>
-								<div id="collectionKidz" class="nav-item nav-link" onclick="getCategories('collectionKidz')">Collection</div>
-								<div id="shoesKidz" class="nav-item nav-link" onclick="getCategories('shoesKidz')">Shoes</div>
-								<div id="bootsKidz" class="nav-item nav-link" onclick="getCategories('bootsKidz')">Racing Boots</div>
-								<div id="contactKidz" class="nav-item nav-link" onclick="getCategories('contactKidz')">Contact</div>
-								<a class="nav-item nav-link last" href="#"><img src="images/search_icon.png"></a>
-								<a class="nav-item nav-link last" href="contact.html"><img src="images/shop_icon.png"></a>
+							<div class="navbar-nav tabContainer" style="margin-right: 250px;">
+								<div id="homeKidz" class="nav-item nav-link activeTabKidz"
+									onclick="getCategories('homeKidz')">Home</div>
+								<div id="collectionKidz" class="nav-item nav-link"
+									onclick="getCategories('collectionKidz')">Collection</div>
+								<div id="shoesKidz" class="nav-item nav-link" onclick="getCategories('shoesKidz')">Shoes
+								</div>
+								<div id="bootsKidz" class="nav-item nav-link" onclick="getCategories('bootsKidz')">
+									Racing Boots</div>
+								<div id="contactKidz" class="nav-item nav-link" onclick="getCategories('contactKidz')">
+									Contact</div>
 							</div>
+							<button type="button" class="btn btnLogin btn-primary" data-toggle="modal"
+								data-target=".searchModal" title="search">
+								<i class="fa fa-search"></i>
+							</button>
+
+							<button type="button" class="btn btnLogin btn-primary" data-toggle="modal"
+								data-target="." title="search">
+								<i class="fa fa-cart-plus"></i>
+							</button>
+
+							<button type="button" class="btn btnLogin btn-primary" data-toggle="modal"
+								data-target="#myModal" title="login">
+								<i class="fa fa-user"></i>
+							</button>
 						</div>
 					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Search -->
+	<div class="modal fade bd-example-modal-sm searchModal" tabindex="" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm" style="padding: 20px auto !important;">
+			<div class="modal-content" style="height: 80px; width: 350px; padding: 20px;">
+				<form class="form-inline">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btnLogin my-2 my-sm-0" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!--Login-->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						×</button>
+					<h4 class="modal-title" id="myModalLabel">
+						Login / Registration</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+							<!-- Nav tabs -->
+							<ul class="nav nav-tabs" style="margin: 20px auto;" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" id="login-tab" data-toggle="tab"
+										data-target="#login" type="button" role="tab" aria-controls="login"
+										aria-selected="true">Login</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="regis-tab" data-toggle="tab" data-target="#regis"
+										type="button" role="tab" aria-controls="regis"
+										aria-selected="false">Registration</button>
+								</li>
+							</ul>
+							<!-- Tab panes -->
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="login" role="tabpanel"
+									aria-labelledby="login-tab">
+									<form role="form" class="form-horizontal">
+										<div class="form-group">
+											<label for="email" class="col-sm-2 control-label">
+												Email</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="email1"
+													placeholder="Enter Your Email" name="email1" required />
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputPassword1" class="col-sm-2 control-label">
+												Password</label>
+											<div class="col-sm-10">
+												<input type="password" class="form-control"
+													placeholder="Enter Your Password" name="psw1" id="psw1" required />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-2">
+											</div>
+											<div class="col-sm-10">
+												<button type="submit"
+													class="btn btnLogin btn-primary btn-sm registerbtn" id="submitData1"
+													name="submitData1">
+													Submit</button>
+												<a href="javascript:;">Forgot your password?</a>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="tab-pane fade show" id="regis" role="tabpanel" aria-labelledby="regis-tab">
+									<form role="form" class="form-horizontal">
+										<div class="form-group">
+											<label for="email" class="col-sm-2 control-label">
+												Email</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="email2"
+													placeholder="Enter Your Email" name="email2" required />
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputPassword1" class="col-sm-2 control-label">
+												Password</label>
+											<div class="col-sm-10">
+												<input type="password" class="form-control"
+													placeholder="Enter Your Password" name="psw2" id="psw2" required />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-2">
+											</div>
+											<div class="col-sm-10">
+												<button type="button"
+													class="btn btnLogin btn-primary btn-sm registerbtn" id="submitData2"
+													name="submitData2">
+													Save & Continue</button>
+												<button type="button" class="btn btn-default btn-sm">
+													Cancel</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div id="OR" class="hidden-xs">
+								OR</div>
+						</div>
+						<div class="col-md-4">
+							<div class="row text-center sign-with">
+								<div class="col-md-12">
+									<h3>
+										Sign in with</h3>
+								</div>
+								<div class="col-md-12">
+									<div class="btn-group btn-group-justified">
+										<a href="#" class="btn btn-primary"><i class="fa fa-facebook"></i></a> <a
+											href="#" class="btn btn-danger">
+											<i class="fa fa-google-plus"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -265,12 +415,57 @@
 			</div>
 			<div class="layout_padding gallery_section">
 				<div class="container">
-					<div class="row" id="renderProduct">
-						
+					<div class="row products-list" id="renderProduct">
+						<script id="products-template" type="x-handlebars-template">​
+								{{#each this}}
+									<li data-index="{{id}}">
+										<a href="#" class="product-photo"><img src="{{image.small}}" height="130" alt="{{name}}"/></a>
+										<h2> {{name}} </h2>
+										<ul class="product-description">
+											<li><span>Nhà sản sxuất: </span>{{details.publisher}}</li>
+											<li><span>Đạo diễn: </span>{{details.author}}</li></br>
+											<li><span>Năm xuất bản: </span>{{details.date}}</li>
+										</ul>
+										<div class="highlight"></div>
+									</li>	
+									
+									<div class="col-sm-4">
+										<div class="best_shoes">
+											<p class="best_text">{{productName}}</p>
+											<div class="shoes_icon"><img src="{{image}}" alt="{{productName}}"></div>
+											<div class="star_text">
+												<div class="left_part">
+													<ul>
+														<li><a href="#"><img src="images/star-icon.png"></a></li>
+														<li><a href="#"><img src="images/star-icon.png"></a></li>
+														<li><a href="#"><img src="images/star-icon.png"></a></li>
+														<li><a href="#"><img src="images/star-icon.png"></a></li>
+														<li><a href="#"><img src="images/star-icon.png"></a></li>
+													</ul>
+												</div>
+												<div class="right_part">
+													<div class="shoes_price">$ <span style="color: #ff4e5b;">{{price}}</span></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								{{/each}}
+						</script> 
 					</div>
+
 					<div class="buy_now_bt">
 						<button class="buy_text">Buy Now</button>
 					</div>
+				</div>
+			</div>
+
+			<div class="single-product page">
+				<div class="overlay"></div>
+				<div class="preview-large">
+					<h3>Single product view</h3>
+					<img src="" />
+					<p></p>
+					<span class="close">×</span>
 				</div>
 			</div>
 		</div>
@@ -442,6 +637,9 @@
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/jquery-3.0.0.min.js"></script>
 	<script src="js/plugin.js"></script>
+	<script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<!-- sidebar -->
 	<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script src="js/custom.js"></script>
@@ -481,6 +679,104 @@
 			});
 	</script>
 	<script src="js/main.js"></script>
+	<script type="module">
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
+			// TODO: Add SDKs for Firebase products that you want to use
+			// https://firebase.google.com/docs/web/setup#available-libraries
+
+			// Your web app's Firebase configuration
+			const firebaseConfig = {
+				apiKey: "AIzaSyD066nNKlPRiUCYBYcAwxOWa7No4B-jgJo",
+				authDomain: "pullshoes-307aa.firebaseapp.com",
+				projectId: "pullshoes-307aa",
+				storageBucket: "pullshoes-307aa.appspot.com",
+				messagingSenderId: "523147308355",
+				appId: "1:523147308355:web:8980781c8bebda3e3f93f6"
+			};
+
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+			const auth = getAuth();
+			const database = getDatabase(app);
+
+			const submitData1 = document.querySelector('#submitData1');
+			submitData1.addEventListener('click', (e) => {
+
+				var email1 = document.getElementById('email1').value;
+				var password1 = document.getElementById('psw1').value;
+				// log in user
+				signInWithEmailAndPassword(auth, email1, password1)
+					.then((userCredential) => {
+						// Signed in
+						const user = userCredential.user;
+						// ...
+
+						// save log in details into real time database
+						var lgDate = new Date();
+						update(ref(database, 'users/' + user.uid), {
+							last_login: lgDate,
+						})
+							.then(() => {
+								// Data saved successfully!
+								alert('user logged in successfully');
+
+							})
+							.catch((error) => {
+								// The write failed...
+								alert(error);
+							});
+					})
+					.catch((error) => {
+						const errorCode = error.code;
+						const errorMessage = error.message;
+						alert(errorMessage);
+					});
+			});
+
+			const submitData2 = document.querySelector('#submitData2');
+			submitData2.addEventListener('click', (e) => {
+
+				var email = document.getElementById('email2').value;
+				var password = document.getElementById('psw2').value;
+
+				//sign up user
+				createUserWithEmailAndPassword(auth, email, password)
+					.then((userCredential) => {
+						// Signed in
+						const user = userCredential.user;
+						// ... user.uid
+						set(ref(database, 'users/' + user.uid), {
+							email: email,
+							password: password
+						})
+							.then(() => {
+								// Data saved successfully!
+								alert('user created successfully');
+
+							})
+							.catch((error) => {
+								// The write failed...
+								alert(error);
+							});
+					})
+					.catch((error) => {
+						const errorCode = error.code;
+						const errorMessage = error.message;
+						// ..
+						alert(errorMessage);
+					});
+
+
+
+				// //sign out user
+				// signOut(auth).then(() => {
+				//     // Sign-out successful.
+				// }).catch((error) => {
+				//     // An error happened.
+				// });
+			});
+	</script>
 </body>
 
 </html>
