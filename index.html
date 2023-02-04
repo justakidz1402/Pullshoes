@@ -415,41 +415,7 @@
 			<div class="layout_padding gallery_section">
 				<div class="container">
 					<div class="row products-list" id="renderProduct">
-						<script id="products-template" type="x-handlebars-template">​
-								{{#each this}}
-									<li data-index="{{id}}">
-										<a href="#" class="product-photo"><img src="{{image.small}}" height="130" alt="{{name}}"/></a>
-										<h2> {{name}} </h2>
-										<ul class="product-description">
-											<li><span>Nhà sản sxuất: </span>{{details.publisher}}</li>
-											<li><span>Đạo diễn: </span>{{details.author}}</li></br>
-											<li><span>Năm xuất bản: </span>{{details.date}}</li>
-										</ul>
-										<div class="highlight"></div>
-									</li>	
-									
-									<div class="col-sm-4">
-										<div class="best_shoes">
-											<p class="best_text">{{productName}}</p>
-											<div class="shoes_icon"><img src="{{image}}" alt="{{productName}}"></div>
-											<div class="star_text">
-												<div class="left_part">
-													<ul>
-														<li><a href="#"><img src="images/star-icon.png"></a></li>
-														<li><a href="#"><img src="images/star-icon.png"></a></li>
-														<li><a href="#"><img src="images/star-icon.png"></a></li>
-														<li><a href="#"><img src="images/star-icon.png"></a></li>
-														<li><a href="#"><img src="images/star-icon.png"></a></li>
-													</ul>
-												</div>
-												<div class="right_part">
-													<div class="shoes_price">$ <span style="color: #ff4e5b;">{{price}}</span></div>
-												</div>
-											</div>
-										</div>
-									</div>
-								{{/each}}
-						</script>
+						
 					</div>
 
 					<div class="buy_now_bt">
@@ -459,7 +425,6 @@
 			</div>
 
 			<div class="single-product page">
-				<div class="overlay"></div>
 				<div class="preview-large">
 					<h3>Single product view</h3>
 					<img src="" alt=""/>
