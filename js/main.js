@@ -98,10 +98,10 @@ for (let i = 0; i < listProduct.length; i++) {
               <h1>${listProduct[i].productName}</h1>
           </div>
           <div class="price">
-              R$ <span>${listProduct[i].price}</span>
+              $ <span>${listProduct[i].price}</span>
           </div>
           <div class="description">
-              <h3>BENEFITS</h3>
+              <h3>DESCRIPTION</h3>
               <ul>
                   <li>Apples are nutricious</li>
                   <li>Apples may be good for weight loss</li>
