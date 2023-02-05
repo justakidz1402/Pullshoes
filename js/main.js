@@ -20,7 +20,7 @@ let listProduct = [
         id: 1,
         productName: 'Best Shoes',
         price: 60,
-        image: "images/shoes-img4.png",
+        image: "images/shoes-img10.png",
     },
     {
         id: 2,
@@ -32,7 +32,7 @@ let listProduct = [
         id: 3,
         productName: "Best Shoes",
         price: "50",
-        image: "images/shoes-img6.png",
+        image: "images/shoes-img11.png",
     },
     {
         id: 4,
