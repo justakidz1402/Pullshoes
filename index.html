@@ -12,26 +12,10 @@
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<!-- bootstrap css -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<!-- style css -->
 	<link rel="stylesheet" href="css/style.css">
-	<!-- Responsive-->
-	<link rel="stylesheet" href="css/responsive.css">
 	<!-- fevicon -->
-	<link rel="icon" href="images/fevicon.png" type="image/gif" />
-	<!-- Scrollbar Custom CSS -->
-	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-	<!-- Tweaks for older IEs-->
-	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-	<!-- owl stylesheets -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
-		media="screen">
-	<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+	<link rel="icon" href="images/fevicon.png" type="image/gif"/>
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
@@ -40,14 +24,14 @@
 
 <body class="main-layout">
 	<!-- header section start -->
-	<div class="header_section header_main">
+	<div class="header_section header_main py-0">
 		<div class="container">
 			<div class="row d-flex justify-content-around align-items-center">
 				<div class="col-sm-3">
-					<div class="logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
+					<div class="logo" onclick="getCategories('homeKidz')"><img src="images/logo.png" alt="hi" style="height: 30px;"></div>
 				</div>
 				<div class="col-sm-9">
-					<nav class="navbar navbar-expand-lg">
+					<nav class="navbar navbar-expand-lg py-0">
 						<button class="navbar-toggler" type="button" data-toggle="collapse"
 							data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
 							aria-label="Toggle navigation">
@@ -105,7 +89,7 @@
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					<button type="button" class="close close-detail" data-dismiss="modal" aria-hidden="true">
 						×</button>
 					<h4 class="modal-title" id="myModalLabel">
 						Login / Registration</h4>
@@ -220,7 +204,7 @@
 	<!-- header section end -->
 	<div class="listCategoryKidz">
 		<!-- Home Page -->
-		<div class="categoryKidz homeKidz">
+		<div class="categoryKidz homeKidz" id="home-page">
 			<div class="header_section">
 				<div class="banner_section">
 					<div class="container-fluid">
@@ -471,7 +455,7 @@
 
 											<div class="form-group">
 												<textarea class="message-bt" placeholder="Message" rows="5" id="comment"
-													name="Message"></textarea>
+													name="Message" style="width: 100%; font-size: 25px; padding-left: 20px;"></textarea>
 											</div>
 										</form>
 									</div>
@@ -572,53 +556,11 @@
 	</div>
 
 	<!-- Javascript files-->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.bundle.min.js"></script>
-	<script src="js/jquery-3.0.0.min.js"></script>
-	<script src="js/plugin.js"></script>
 	<script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
 	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<!-- sidebar -->
-	<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="js/custom.js"></script>
-	<!-- javascript -->
-	<script src="js/owl.carousel.js"></script>
-	<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-	<script>
-		$(document).ready(function () {
-			$(".fancybox").fancybox({
-				openEffect: "none",
-				closeEffect: "none"
-			});
-
-
-			$('#myCarousel').carousel({
-				interval: false
-			});
-
-			//scroll slides on swipe for touch enabled devices
-
-			$("#myCarousel").on("touchstart", function (event) {
-
-				var yClick = event.originalEvent.touches[0].pageY;
-				$(this).one("touchmove", function (event) {
-
-					var yMove = event.originalEvent.touches[0].pageY;
-					if (Math.floor(yClick - yMove) > 1) {
-						$(".carousel").carousel('next');
-					}
-					else if (Math.floor(yClick - yMove) < -1) {
-						$(".carousel").carousel('prev');
-					}
-				});
-				$(".carousel").on("touchend", function () {
-					$(this).off("touchmove");
-				});
-			});})
-	</script>
 	<script src="js/main.js"></script>
+	<!-- javascript -->
 	<script type="module">
 			// Import the functions you need from the SDKs you need
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";

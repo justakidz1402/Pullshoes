@@ -15,11 +15,40 @@ function getCategories(x) {
     console.log(x)
 }
 
+//Products and Product detail
+class Shoes {
+    constructor(id, productName, price, image) {
+        this.id = id;
+        this.productName = productName;
+        this.price = price;
+        this.image = image;
+    }
+}
+let shoe1 = new Shoes(1, 'Best Shoes', "60", 'images/shoes-img10.png');
+let shoe2 = new Shoes(2, 'Best Shoes', "400", 'images/shoes-img5.png');
+let shoe3 = new Shoes(3, 'Best Shoes', "50", 'images/shoes-img11.png');
+let shoe4 = new Shoes(4, 'Sports Shoes', "70", 'images/shoes-img7.png');
+let shoe5 = new Shoes(5, 'Sports Shoes', "100", 'images/shoes-img8.png');
+let shoe6 = new Shoes(6, 'Sports Shoes', "90", 'images/shoes-img9.png');
+console.log(shoe1);
+
+for (let i = 0; i < Shoes.length; i++) {
+    console.log(Shoes[i]);
+}
+
+const objectArray = Object.entries(shoe1);
+
+objectArray.forEach(([key, value]) => {
+  console.log(key); // 'one'
+  console.log(value); // 1
+});
+// Object.entries(Shoes).forEach(([key, value]) => console.log(key, value));
+
 let listProduct = [
     {
         id: 1,
         productName: 'Best Shoes',
-        price: 60,
+        price: "60",
         image: "images/shoes-img10.png",
     },
     {
@@ -82,7 +111,7 @@ for (let i = 0; i < listProduct.length; i++) {
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">${listProduct[i].productName} Detail</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true" class="close-detail">&times;</span>
         </button>
       </div>
       <section class="product">
@@ -122,11 +151,7 @@ for (let i = 0; i < listProduct.length; i++) {
     else {
         document.getElementById("renderProduct").innerHTML += boxProduct
     }
-    console.log(listProduct[i].name)
 }
-
-//Detail Page
-
 
 // Login
 $('#myModal').modal('show');
