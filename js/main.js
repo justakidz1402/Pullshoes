@@ -16,78 +16,78 @@ function getCategories(x) {
 }
 
 //Products and Product detail
-class Shoes {
-    constructor(id, productName, price, image) {
-        this.id = id;
-        this.productName = productName;
-        this.price = price;
-        this.image = image;
-    }
-}
-let shoe1 = new Shoes(1, 'Best Shoes', "60", 'images/shoes-img10.png');
-let shoe2 = new Shoes(2, 'Best Shoes', "400", 'images/shoes-img5.png');
-let shoe3 = new Shoes(3, 'Best Shoes', "50", 'images/shoes-img11.png');
-let shoe4 = new Shoes(4, 'Sports Shoes', "70", 'images/shoes-img7.png');
-let shoe5 = new Shoes(5, 'Sports Shoes', "100", 'images/shoes-img8.png');
-let shoe6 = new Shoes(6, 'Sports Shoes', "90", 'images/shoes-img9.png');
-console.log(shoe1);
-
-for (let i = 0; i < Shoes.length; i++) {
-    console.log(Shoes[i]);
-}
-
-const objectArray = Object.entries(shoe1);
-
-objectArray.forEach(([key, value]) => {
-    console.log(key); // 'one'
-    console.log(value); // 1
-});
-// Object.entries(Shoes).forEach(([key, value]) => console.log(key, value));
-
 let listProduct = [
     {
         id: 1,
         productName: 'White Grey Shoes',
         price: "60",
         image: "images/shoes-img10.png",
+        category: 'all grey'
     },
     {
         id: 2,
         productName: "Purple Neon Shoes",
         price: "400",
         image: "images/shoes-img5.png",
+        category: 'all purple neon'
+
     },
     {
         id: 3,
-        productName: "Neon Red Shoes",
+        productName: "Green Red Shoes",
         price: "50",
         image: "images/shoes-img11.png",
+        category: 'all green'
     },
     {
         id: 4,
         productName: "Black Grey Shoes",
         price: "70",
         image: "images/shoes-img7.png",
+        category: 'all black grey'
     },
     {
         id: 5,
         productName: "Black Purple Shoes",
         price: "100",
-        image: "images/shoes-img8.png",
+        image: "images/running-shoes.png",
+        category: 'all black purple'
     },
     {
         id: 6,
         productName: "Blue Green Shoes",
         price: "90",
         image: "images/shoes-img9.png",
+        category: 'all blue green'
+    },
+    {
+        id: 7,
+        productName: "Neon Pink Shoes",
+        price: "100",
+        image: "images/shoes-img12.png",
+        category: 'all neon'
+    },
+    {
+        id: 8,
+        productName: "Green Yellow Shoes",
+        price: "80",
+        image: "images/shoes-img13.png",
+        category: 'all green'
+    },
+    {
+        id: 9,
+        productName: "Blue Green Shoes",
+        price: "110",
+        image: "images/shoes-img14.png",
+        category: 'all blue green'
     }
 ];
 
 for (let i = 0; i < listProduct.length; i++) {
-    var boxProduct = `<div class="col-sm-4" data-toggle="modal" data-target="#${listProduct[i].id}">
+    var boxProduct = `<div class="col-sm-4 categoryShoes ${listProduct[i].category}" data-toggle="modal" data-target="#${listProduct[i].id}">
     <div class="best_shoes">
-        <p class="best_text">${listProduct[i].productName}</p>
-        <div class="shoes_icon"><img src='${listProduct[i].image}'></div>
+        <p class="best_text product-name">${listProduct[i].productName}</p>
+        <div class="shoes_icon"><img src='${listProduct[i].image}' style="width: 200px; height: 200px"></div>
         <div class="star_text">
             <div class="left_part">
                 <ul>
@@ -118,7 +118,7 @@ for (let i = 0; i < listProduct.length; i++) {
       <div class="product__photo">
           <div class="photo-container">
               <div class="photo-main img-product">
-                  <img class="img-prd" src='${listProduct[i].image}' alt="green apple slice" style="margin: 100px;">
+                  <img class="img-prd" src='${listProduct[i].image}' alt="green apple slice" style="margin: 100px; width: 200px; height: 200px">
               </div>
           </div>
       </div>
@@ -153,26 +153,57 @@ for (let i = 0; i < listProduct.length; i++) {
     }
 }
 
+//Filter
+function filterProduct(x) {
+    document.getElementById('all').classList.remove('activeShoes')
+    document.getElementById('grey').classList.remove('activeShoes')
+    document.getElementById('purple').classList.remove('activeShoes')
+    document.getElementById('neon').classList.remove('activeShoes')
+    document.getElementById('blue').classList.remove('activeShoes')
+    document.getElementById('green').classList.remove('activeShoes')
+    document.getElementById('black').classList.remove('activeShoes')
+    document.getElementById(x).classList.add("activeShoes")
+    for (var i = 0; i < 9; i++) {
+        document.getElementsByClassName('categoryShoes')[i].style.display = 'none';
+    }
+    for (var i = 0; i < document.getElementsByClassName(x).length; i++) {
+        document.getElementsByClassName(x)[i].style.display = 'block';
+    }
+    console.log(x)
+}
+
+//Search
+document.getElementById("search").addEventListener("click", () => {
+    //initializations
+    let searchInput = document.getElementById("search-input").value;
+    let elements = document.querySelectorAll(".product-name");
+    let cards = document.querySelectorAll(".categoryShoes");
+    //loop through all elements
+    elements.forEach((element, index) => {
+        //check if text includes the search value
+        if (((element.innerText).toUpperCase()).includes(searchInput.toUpperCase())) {
+            //display matching card
+            cards[index].classList.remove("hide");
+        } else {
+            //hide others
+            document.getElementsByClassName('categoryShoes')[index].style.display = 'none';
+        }
+        console.log(element);
+    });
+});
+
 // Login
-$('#myModal').modal('show');
+// $('#myModal').modal('show');
 
 //Giỏ Hàng
 var order = document.getElementsByClassName("order")[0];
 order.onclick = function () {
-    alert("Cảm ơn bạn đã thanh toán đơn hàng")
-}
-// xóa cart
-var remove_cart = document.getElementsByClassName("btn-danger");
-for (var i = 0; i < remove_cart.length; i++) {
-    var button = remove_cart[i]
-    button.addEventListener("click", function () {
-        var button_remove = event.target
-        button_remove.parentElement.parentElement.remove()
-    })
+    alert('Mua hàng thành công');
 }
 
 // xóa cart
 var remove_cart = document.getElementsByClassName("btn-danger");
+debugger;
 for (var i = 0; i < remove_cart.length; i++) {
     var button = remove_cart[i]
     button.addEventListener("click", function () {
@@ -214,7 +245,7 @@ for (var i = 0; i < add_cart.length; i++) {
         $('.detailModal').modal('hide');
         updatecart();
     })
-    
+
 }
 
 function addItemToCart(title, price, img) {
@@ -238,7 +269,7 @@ function addItemToCart(title, price, img) {
   <span class="cart-price cart-column">${price}</span>
   <div class="cart-quantity cart-column">
       <input class="cart-quantity-input" type="number" value="1">
-      <button class="btn btn-danger" type="button">Xóa</button>
+      <button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
   </div>`
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)

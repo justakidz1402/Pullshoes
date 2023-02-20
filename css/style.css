@@ -4,6 +4,8 @@
 * {
     box-sizing: border-box !important;
     transition: ease all 0.5s;
+    border: none;
+    outline: none;
 }
 
 html {
@@ -629,6 +631,10 @@ body {
     min-height: 220px;
 }
 
+.shoes_icon{
+    filter: saturate(150%) contrast(120%) hue-rotate(10deg) drop-shadow(1px 20px 10px rgba(0, 0, 0, 0.3));
+}
+
 .star_text {
     width: 100%;
     float: left;
@@ -1181,7 +1187,7 @@ img {
 
 .cart-items {
     height: 340px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .cart-column {
@@ -1368,4 +1374,56 @@ img {
 .cart-total-price {
     color: #333;
     font-size: 1.1em;
+}
+
+/* 
+Search */
+
+.wrapper-search {
+    width: 95%;
+    margin: 0 auto;
+}
+
+#search-container {
+    margin: 1em 0;
+}
+
+#search-container #search-input {
+    background-color: transparent;
+    width: 79%;
+    border-bottom: 2px solid #110f29;
+    padding: 0.5em;
+    color: white;
+}
+
+#search-container #search-input:focus {
+    border-bottom-color: white;
+    color: #ffffff;
+}
+
+#search-container button {
+    padding: 0.5em;
+    margin-left: 1em;
+    background-color: white;
+    color: #db5660;
+    border-radius: 5px;
+    margin-bottom: 0;
+}
+
+.button-value {
+    border: 2px solid #ffffff;
+    padding: 0.5em;
+    border-radius: 3em;
+    background-color: transparent;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.activeShoes{
+    background-color: white;
+    color: #db5660;
+}
+
+.hide{
+    display: none;
 }

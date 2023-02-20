@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<!-- basic -->
 	<meta charset="utf-8">
@@ -15,7 +16,7 @@
 	<!-- style css -->
 	<link rel="stylesheet" href="css/style.css">
 	<!-- fevicon -->
-	<link rel="icon" href="images/fevicon.png" type="image/gif"/>
+	<link rel="icon" href="images/fevicon.png" type="image/gif" />
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
@@ -28,7 +29,8 @@
 		<div class="container">
 			<div class="row d-flex justify-content-around align-items-center">
 				<div class="col-sm-3">
-					<div class="logo" onclick="getCategories('homeKidz')"><img src="images/logo.png" alt="hi" style="height: 30px;"></div>
+					<div class="logo" onclick="getCategories('homeKidz')"><img src="images/logo.png" alt="hi"
+							style="height: 30px;"></div>
 				</div>
 				<div class="col-sm-9">
 					<nav class="navbar navbar-expand-lg py-0">
@@ -43,19 +45,19 @@
 									onclick="getCategories('homeKidz')">Home</div>
 								<div id="collectionKidz" class="nav-item tabSPA nav-link"
 									onclick="getCategories('collectionKidz')">Collection</div>
-								<div id="shoesKidz" class="nav-item tabSPA nav-link" onclick="getCategories('shoesKidz')">Shoes
+								<div id="shoesKidz" class="nav-item tabSPA nav-link"
+									onclick="getCategories('shoesKidz')">Shoes
 								</div>
-								<div id="bootsKidz" class="nav-item tabSPA nav-link" onclick="getCategories('bootsKidz')">
+								<div id="bootsKidz" class="nav-item tabSPA nav-link"
+									onclick="getCategories('bootsKidz')">
 									Racing Boots</div>
-								<div id="contactKidz" class="nav-item tabSPA nav-link" onclick="getCategories('contactKidz')">
+								<div id="contactKidz" class="nav-item tabSPA nav-link"
+									onclick="getCategories('contactKidz')">
 									Contact</div>
 							</div>
-							<button type="button" class="btn btnLogin btn-primary" data-toggle="modal"
-								data-target=".searchModal" title="search">
-								<i class="fa fa-search"></i>
-							</button>
 
-							<button type="button" class="btn btnLogin btn-primary" data-toggle="modal" data-target="#cartModal" title="search">
+							<button type="button" class="btn btnLogin btn-primary" data-toggle="modal"
+								data-target="#cartModal" title="search">
 								<i class="fa fa-cart-plus"></i>
 							</button>
 
@@ -73,41 +75,31 @@
 	<!-- Cart -->
 	<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
-		  <div class="modal-content">
-			<div class="modal-header cart-header1">
-			  <h5 class="modal-title" id="exampleModalLabel">Giỏ Hàng</h5>
-			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			  </button>
-			</div>
-			<div class="modal-body">
-				<div class="cart-row">
-					<span class="cart-item cart-header cart-column">Sản Phẩm</span>
-					<span class="cart-price cart-header cart-column">Giá</span>
-					<span class="cart-quantity cart-header cart-column">Số Lượng</span>
+			<div class="modal-content">
+				<div class="modal-header cart-header1">
+					<h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
-				<div class="cart-items">
+				<div class="modal-body">
+					<div class="cart-row">
+						<span class="cart-item cart-header cart-column">Product</span>
+						<span class="cart-price cart-header cart-column">Price</span>
+						<span class="cart-quantity cart-header cart-column">Quantity - Action</span>
+					</div>
+					<div class="cart-items">
+					</div>
+					<div class="cart-total">
+						<strong class="cart-total-title">Total: </strong>
+						<span class="cart-total-price"></span>$
+					</div>
 				</div>
-				<div class="cart-total">
-					<strong class="cart-total-title">Tổng Cộng: </strong>
-					<span class="cart-total-price"></span>$
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary order" data-toggle="modal"
+						data-target="#OrderModal">Buy</button>
 				</div>
-			</div>
-			<div class="modal-footer">
-			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-			  <button type="button" class="btn btn-primary order">Thanh Toán</button>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	<!-- Search -->
-	<div class="modal fade bd-example-modal-sm searchModal" tabindex="" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-sm" style="padding: 20px auto !important;">
-			<div class="modal-content" style="height: 80px; width: 350px; padding: 20px;">
-				<form class="form-inline">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btnLogin my-2 my-sm-0" type="submit">Search</button>
-				</form>
 			</div>
 		</div>
 	</div>
@@ -260,17 +252,14 @@
 													</div>
 												</div>
 												<div class="col-sm-5">
-													<div class="shoes_img"><img src="images/running-shoes.png" alt=""></div>
+													<div class="shoes_img"><img src="images/running-shoes.png" alt="">
+													</div>
 												</div>
 											</div>
 										</div>
 										<div class="carousel-item">
 											<div class="row">
-												<div class="col-sm-2 padding_0">
-													<p class="mens_taital">Men Shoes</p>
-													<div class="page_no">0/2</div>
-													<p class="mens_taital_2">Men Shoes</p>
-												</div>
+												<div class="col-sm-2 padding_0"></div>
 												<div class="col-sm-5">
 													<div class="banner_taital">
 														<h1 class="banner_text">New Running Shoes </h1>
@@ -286,17 +275,14 @@
 													</div>
 												</div>
 												<div class="col-sm-5">
-													<div class="shoes_img"><img src="images/running-shoes.png" alt=""></div>
+													<div class="shoes_img"><img src="images/running-shoes.png" alt="">
+													</div>
 												</div>
 											</div>
 										</div>
 										<div class="carousel-item">
 											<div class="row">
-												<div class="col-sm-2 padding_0">
-													<p class="mens_taital">Men Shoes</p>
-													<div class="page_no">0/2</div>
-													<p class="mens_taital_2">Men Shoes</p>
-												</div>
+												<div class="col-sm-2 padding_0"></div>
 												<div class="col-sm-5">
 													<div class="banner_taital">
 														<h1 class="banner_text">New Running Shoes </h1>
@@ -312,33 +298,8 @@
 													</div>
 												</div>
 												<div class="col-sm-5">
-													<div class="shoes_img"><img src="images/running-shoes.png" alt=""></div>
-												</div>
-											</div>
-										</div>
-										<div class="carousel-item">
-											<div class="row">
-												<div class="col-sm-2 padding_0">
-													<p class="mens_taital">Men Shoes</p>
-													<div class="page_no">0/2</div>
-													<p class="mens_taital_2">Men Shoes</p>
-												</div>
-												<div class="col-sm-5">
-													<div class="banner_taital">
-														<h1 class="banner_text">New Running Shoes </h1>
-														<h1 class="mens_text"><strong>Men's Like Plex</strong></h1>
-														<p class="lorem_text">ipsum dolor sit amet, consectetur
-															adipiscing
-															elit,
-															sed do eiusmod tempor incididunt ut labore et dolore magna
-															aliqua.
-														</p>
-														<button class="buy_bt">Buy Now</button>
-														<button class="more_bt">See More</button>
+													<div class="shoes_img"><img src="images/running-shoes.png" alt="">
 													</div>
-												</div>
-												<div class="col-sm-5">
-													<div class="shoes_img"><img src="images/running-shoes.png" alt=""></div>
 												</div>
 											</div>
 										</div>
@@ -414,8 +375,38 @@
 				</div>
 			</div>
 			<div class="layout_padding gallery_section">
+				<div class="searchFilter d-flex justify-content-center mb-4">
+					<div class="wrapper">
+						<div id="search-container">
+							<input type="search" id="search-input" placeholder="Search Product By Name" />
+							<button id="search">Search</button>
+						</div>
+						<div id="buttons">
+							<button class="button-value activeShoes" onclick="filterProduct('all')"
+								id="all">All</button>
+							<button class="button-value" onclick="filterProduct('grey')" id="grey">
+								Grey
+							</button>
+							<button class="button-value" onclick="filterProduct('purple')" id="purple">
+								Purple
+							</button>
+							<button class="button-value" onclick="filterProduct('neon')" id="neon">
+								Neon
+							</button>
+							<button class="button-value" onclick="filterProduct('blue')" id="blue">
+								Blue
+							</button>
+							<button class="button-value" onclick="filterProduct('green')" id="green">
+								Green
+							</button>
+							<button class="button-value" onclick="filterProduct('black')" id="black">
+								Black
+							</button>
+						</div>
+					</div>
+				</div>
 				<div class="container">
-					<div class="row products-list" id="renderProduct"></div>
+					<div class="row products-list justify-content-center" id="renderProduct"></div>
 				</div>
 			</div>
 		</div>
@@ -468,19 +459,22 @@
 									<div class="container">
 										<form action="/action_page.php">
 											<div class="form-group">
-												<input type="text" class="email-bt" placeholder="Name" name="Name" aria-label="input">
+												<input type="text" class="email-bt" placeholder="Name" name="Name"
+													aria-label="input">
 											</div>
 											<div class="form-group">
 												<input type="text" class="email-bt" placeholder="Phone Number"
-												aria-label="input" name="Name">
+													aria-label="input" name="Name">
 											</div>
 											<div class="form-group">
-												<input type="text" class="email-bt" placeholder="Email" name="Email" aria-label="input">
+												<input type="text" class="email-bt" placeholder="Email" name="Email"
+													aria-label="input">
 											</div>
 
 											<div class="form-group">
 												<textarea class="message-bt" placeholder="Message" rows="5" id="comment"
-													name="Message" style="width: 100%; font-size: 25px; padding-left: 20px;"></textarea>
+													name="Message"
+													style="width: 100%; font-size: 25px; padding-left: 20px;"></textarea>
 											</div>
 										</form>
 									</div>
@@ -536,12 +530,13 @@
 			<div class="footer_section_2">
 				<div class="row">
 					<div class="col-2">
-							<h2 class="shop_text">About</h2>
-							<div class="image-icon">
-								<span class="delivery_text">ipsum dolor sit amet, consectetur ipsum dolor sit amet, consectetur ipsum
-									dolor sit amet,
-								</span>
-							</div>
+						<h2 class="shop_text">About</h2>
+						<div class="image-icon">
+							<span class="delivery_text">ipsum dolor sit amet, consectetur ipsum dolor sit amet,
+								consectetur ipsum
+								dolor sit amet,
+							</span>
+						</div>
 					</div>
 					<div class="col-2">
 						<h2 class="shop_text">Address </h2>
@@ -579,7 +574,8 @@
 					<div class="col-3">
 						<h2 class="adderess_text">Newsletter</h2>
 						<div class="form-group">
-							<input type="text" class="enter_email" placeholder="Enter Your email" name="Name" aria-label="input">
+							<input type="text" class="enter_email" placeholder="Enter Your email" name="Name"
+								aria-label="input">
 						</div>
 						<button class="subscribr_bt">Subscribe</button>
 					</div>
@@ -595,102 +591,116 @@
 	<script src="js/main.js"></script>
 	<!-- javascript -->
 	<script type="module">
-			// Import the functions you need from the SDKs you need
-			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-			// TODO: Add SDKs for Firebase products that you want to use
-			// https://firebase.google.com/docs/web/setup#available-libraries
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+		import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+		import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
 
-			// Your web app's Firebase configuration
-			const firebaseConfig = {
-				apiKey: "AIzaSyD066nNKlPRiUCYBYcAwxOWa7No4B-jgJo",
-				authDomain: "pullshoes-307aa.firebaseapp.com",
-				projectId: "pullshoes-307aa",
-				storageBucket: "pullshoes-307aa.appspot.com",
-				messagingSenderId: "523147308355",
-				appId: "1:523147308355:web:8980781c8bebda3e3f93f6"
-			};
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		const firebaseConfig = {
+			apiKey: "AIzaSyDE5f4NejE1UELOS2CDDcpSrI_7MN4A15c",
+			authDomain: "test-f770b.firebaseapp.com",
+			databaseURL: "https://test-f770b-default-rtdb.firebaseio.com",
+			projectId: "test-f770b",
+			storageBucket: "test-f770b.appspot.com",
+			messagingSenderId: "819189006325",
+			appId: "1:819189006325:web:eca2492dc4229e3616eabc",
+			measurementId: "G-7Q9CXGMD4R"
+		};
 
-			// Initialize Firebase
-			const app = initializeApp(firebaseConfig);
-			const auth = getAuth();
-			const database = getDatabase(app);
+		// Initialize Firebase
 
-			const submitData1 = document.querySelector('#submitData1');
-			submitData1.addEventListener('click', (e) => {
+		import { getDatabase, ref, set, child, get, update, remove }
+			from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+		const app = initializeApp(firebaseConfig);
+		const analytics = getAnalytics(app);
+		const auth = getAuth();
+		const database = getDatabase(app)
 
-				var email1 = document.getElementById('email1').value;
-				var password1 = document.getElementById('psw1').value;
-				// log in user
-				signInWithEmailAndPassword(auth, email1, password1)
-					.then((userCredential) => {
-						// Signed in
-						const user = userCredential.user;
-						// ...
+		const submitData2 = document.querySelector('#submitData2');
 
-						// save log in details into real time database
-						var lgDate = new Date();
-						update(ref(database, 'users/' + user.uid), {
-							last_login: lgDate,
-						})
-							.then(() => {
-								// Data saved successfully!
-								alert('user logged in successfully');
+		//     Sign up 
+		submitData2.addEventListener('click', (e) => {
 
-							})
-							.catch((error) => {
-								// The write failed...
-								alert(error);
-							});
+			var email = document.getElementById('email2').value;
+			var password = document.getElementById('psw2').value;
+
+			// 		// check email/pass
+			function Validation() {
+				let emailregex = /^[a-zA-Z0-9]+@(gmail|yahoo|outlook)\.com$/;
+				if (!emailregex.test(email.value)) {
+					alert("enter a valid email");
+					return false;
+				}
+				if (password.value.length < 6) {
+					alert('password need to be at least 6');
+				}
+				return true;
+			}
+
+			createUserWithEmailAndPassword(auth, email, password)
+				.then((userCredential) => {
+					// Signed in
+					const user = userCredential.user;
+					// ... user.uid
+					set(ref(database, 'users/' + user.uid), {
+						email: email,
+						password: password
 					})
-					.catch((error) => {
-						const errorCode = error.code;
-						const errorMessage = error.message;
-						alert(errorMessage);
-					});
-			});
+						.then((data) => {
+							console.log(data)
+							// Data saved successfully!
+							alert('user created successfully');
 
-			const submitData2 = document.querySelector('#submitData2');
-			submitData2.addEventListener('click', (e) => {
-
-				var email = document.getElementById('email2').value;
-				var password = document.getElementById('psw2').value;
-
-				//sign up user
-				createUserWithEmailAndPassword(auth, email, password)
-					.then((userCredential) => {
-						// Signed in
-						const user = userCredential.user;
-						// ... user.uid
-						set(ref(database, 'users/' + user.uid), {
-							email: email,
-							password: password
 						})
-							.then(() => {
-								// Data saved successfully!
-								alert('user created successfully');
+						.catch((error) => {
+							// The write failed...
+							alert(error);
+						});
+				})
+				.catch((error) => {
+					const errorCode = error.code;
+					const errorMessage = error.message;
+					// ..
+					alert(errorMessage);
+				});
+		});
+		const submitData1 = document.querySelector('#submitData1');
+		submitData1.addEventListener('click', (e) => {
 
-							})
-							.catch((error) => {
-								// The write failed...
-								alert(error);
-							});
+			var email1 = document.getElementById('email1').value;
+			var password1 = document.getElementById('psw1').value;
+			// log in user
+			signInWithEmailAndPassword(auth, email1, password1)
+				.then((userCredential) => {
+					// Signed in
+					const user = userCredential.user;
+					// ...
+
+					// save log in details into real time database
+					var lgDate = new Date();
+					update(ref(database, 'users/' + user.uid), {
+						last_login: lgDate,
 					})
-					.catch((error) => {
-						const errorCode = error.code;
-						const errorMessage = error.message;
-						// ..
-						alert(errorMessage);
-					});
+						.then(() => {
+							// Data saved successfully!
+							alert('user logged in successfully');
 
-
-
-				// //sign out user
-				// signOut(auth).then(() => {
-				//     // Sign-out successful.
-				// }).catch((error) => {
-				//     // An error happened.
-				// });
-			});
+						})
+						.catch((error) => {
+							// The write failed...
+							alert(error);
+						});
+				})
+				.catch((error) => {
+					const errorCode = error.code;
+					const errorMessage = error.message;
+					alert(errorMessage);
+				});
+		});
 	</script>
 </body>
 
