@@ -88,11 +88,11 @@
 						<span class="cart-price cart-header cart-column">Price</span>
 						<span class="cart-quantity cart-header cart-column">Quantity - Action</span>
 					</div>
-					<div class="cart-items">
+					<div id="cart-items" class="cart-items">
 					</div>
 					<div class="cart-total">
 						<strong class="cart-total-title">Total: </strong>
-						<span class="cart-total-price"></span>$
+						<span class="cart-total-price" id="total-price">0</span>$
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -379,27 +379,27 @@
 					<div class="wrapper">
 						<div id="search-container">
 							<input type="search" id="search-input" placeholder="Search Product By Name" />
-							<button id="search">Search</button>
+							<button onclick="Search()">Search</button>
 						</div>
 						<div id="buttons">
-							<button class="button-value activeShoes" onclick="filterProduct('all')"
+							<button class="filter button-value activeShoes" onclick="Filter('all')"
 								id="all">All</button>
-							<button class="button-value" onclick="filterProduct('grey')" id="grey">
+							<button class="filter button-value" onclick="Filter('grey')" id="grey">
 								Grey
 							</button>
-							<button class="button-value" onclick="filterProduct('purple')" id="purple">
+							<button class="filter button-value" onclick="Filter('purple')" id="purple">
 								Purple
 							</button>
-							<button class="button-value" onclick="filterProduct('neon')" id="neon">
+							<button class="filter button-value" onclick="Filter('neon')" id="neon">
 								Neon
 							</button>
-							<button class="button-value" onclick="filterProduct('blue')" id="blue">
+							<button class="filter button-value" onclick="Filter('blue')" id="blue">
 								Blue
 							</button>
-							<button class="button-value" onclick="filterProduct('green')" id="green">
+							<button class="filter button-value" onclick="Filter('green')" id="green">
 								Green
 							</button>
-							<button class="button-value" onclick="filterProduct('black')" id="black">
+							<button class="filter button-value" onclick="Filter('black')" id="black">
 								Black
 							</button>
 						</div>
