@@ -669,6 +669,9 @@
 				});
 		});
 		const submitData1 = document.querySelector('#submitData1');
+		document.getElementById("submitData1").addEventListener("click", (e)=>{
+                event.preventDefault()
+                });
 		submitData1.addEventListener('click', (e) => {
 
 			var email1 = document.getElementById('email1').value;
