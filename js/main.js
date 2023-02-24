@@ -108,30 +108,24 @@ let render = (listProduct = []) => {
 render(listProduct);
 
 
-//Filter
+//Filter and Search
 let Filter = (x) => {
-    document.getElementById('all').classList.remove('activeShoes')
-    document.getElementById('grey').classList.remove('activeShoes')
-    document.getElementById('purple').classList.remove('activeShoes')
-    document.getElementById('neon').classList.remove('activeShoes')
-    document.getElementById('blue').classList.remove('activeShoes')
-    document.getElementById('green').classList.remove('activeShoes')
-    document.getElementById('black').classList.remove('activeShoes')
-    document.getElementById(x).classList.add("activeShoes")
-
-    for (var i = 0; i < 9; i++) {
-        document.getElementsByClassName('categoryShoes')[i].style.display = 'none';
-    }
-    for (var i = 0; i < document.getElementsByClassName(x).length; i++) {
-        document.getElementsByClassName(x)[i].style.display = 'block';
-    }
+    let FilterList = listProduct.filter(e => (e.category).toLowerCase().includes(x.toLowerCase()));
+    let result = FilterList.filter(value => Search().includes(value));
+    render(result);
+    return FilterList;
 }
 
-//Search
 let Search = () => {
     let name = document.getElementById("search-input").value;
     let searchList = listProduct.filter(e => (e.productName).toLowerCase().includes(name.toLowerCase()));
     render(searchList);
+    return searchList;
+}
+
+let reset = () => {
+    document.getElementById('search-input').value = "";
+    render(listProduct);
 }
 
 // Login
@@ -152,14 +146,14 @@ var productIdCounter = 0;
 let showCart = (listCart = []) => {
     let row = ``;
     listCart.map(({ id, title, price, image, quantity }) => {
-        row += `<div class="d-flex cart-row">
+        row += `<div class="d-flex cart-row justify-content-center">
         <div class="cart-item cart-column">
         <img class="cart-item-image" src="${image}" width="100" height="100">
         <span class="cart-item-title">${title}</span>
     </div>
-    <span class="cart-price cart-column">${price}</span>
-    <div class="cart-quantity cart-column">
-        <input id='quantity-${id}' class="cart-quantity-input" type="number" value="${quantity}">
+    <span class="cart-price cart-column d-flex justify-content-center">${price}$</span>
+    <div class="cart-quantity cart-column d-flex justify-content-center">
+        <input id='quantity-${id}' class="cart-quantity-input" type="number" value="${quantity}" min="1">
         <button class="btn btn-danger" type="button" onclick="Delete(${id})"><i class="fa fa-trash"></i></button>
     </div>  </div> 
         `
@@ -181,16 +175,19 @@ let AddToCart = (title, price, image) => {
         $('#cartModal').modal('show');
         $('.detailModal').modal('hide');
     } else {
-        alert('This product is already in your cart!');
+        $('#existedShoe').modal('show');
+        setTimeout(() => {
+            $('#existedShoe').modal('hide');
+        }, 1500);
         $('#cartModal').modal('show');
         $('.detailModal').modal('hide');
     }
-    console.log(listCart);
 }
 
 var order = document.getElementsByClassName("order")[0];
 order.onclick = function () {
-    alert('Mua hàng thành công');
+    historyPay();
+    showPayment(data);
 }
 
 // xóa cart
@@ -204,6 +201,7 @@ let Delete = (x) => {
 let Total = () => {
     let total = listCart.reduce((sum, shoe) => parseInt(sum) + parseInt(shoe.price) * parseInt(shoe.quantity), 0);
     document.getElementById('total-price').innerText = total;
+    return total;
 }
 
 let UpdateQuantity = () => {
@@ -217,6 +215,58 @@ let UpdateQuantity = () => {
     });
 }
 
+//Lưu đơn hàng vào local storage
+let data = JSON.parse(localStorage.getItem('myPayment')) || [];
+let historyPay = () => {
+    if (listCart == null || listCart == [] || Total() == 0) {
+        $('#BuyFail').modal('show');
+        setTimeout(() => {
+            $('#BuyFail').modal('hide');
+        }, 1500);
+        $('#cartModal').modal('hide');
+    } else {
+        let newPayment = {
+            product: listCart,
+            time: new Date().toLocaleString(),
+            total: Total()
+        };
+        data.push(newPayment);
+        localStorage.setItem('myPayment', JSON.stringify(data));
+        listCart.splice(0, listCart.length);
+        Total();
+        showCart(listCart);
+        $('#BuySuccess').modal('show');
+        setTimeout(() => {
+            $('#BuySuccess').modal('hide');
+        }, 1500);
+        $('#cartModal').modal('hide');
+    }
+}
 
+// id, title, price, image, quantity
+let showPayment = (data = []) => {
+    let row = ``;
+    data.map(({ product, time, total }) => {
+        row += `<tr>
+        <td rowspan="${product}">${time}</td>
+        <td class="payment-detail">
+            <img src="${product}" alt="">
+            <h6>${product}</h6>
+            <h6>Quantity: ${product}</h6>
+            <h6>Price: ${product}</h6>
+        </td>
+        <td rowspan="${product}">${total}$
+            <button class="btn btn-danger" onclick="removePayment('${time}')" type="button"><i class="fa fa-trash"></i></button>
+        </td>
+    </tr>
+        `
+    })
+    document.getElementById('payment-detail').innerHTML = row;
+}
+showPayment(data);
 
-
+let removePayment = (x) => {
+    data = data.filter(e => e.time !== x);
+    localStorage.setItem('myPayment', JSON.stringify(data));
+    showPayment(data);
+}

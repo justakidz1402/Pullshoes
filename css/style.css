@@ -137,6 +137,7 @@ img {
     justify-content: center !important;
     align-items: center !important;
     padding: 15px !important;
+    user-select: none;
 }
 
 :focus {
@@ -631,7 +632,7 @@ body {
     min-height: 220px;
 }
 
-.shoes_icon{
+.shoes_icon {
     filter: saturate(150%) contrast(120%) hue-rotate(10deg) drop-shadow(1px 20px 10px rgba(0, 0, 0, 0.3));
 }
 
@@ -1419,11 +1420,47 @@ Search */
     cursor: pointer;
 }
 
-.activeShoes{
+.activeShoes {
     background-color: white;
     color: #db5660;
 }
 
-.hide{
+.hide {
     display: none;
+}
+
+/*History Payment*/
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td{
+    text-align: center !important;
+}
+
+.payment-table {
+    width: 100% !important;
+}
+
+.payment-detail img {
+    width: 60px;
+}
+
+.payment-detail {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.payment-detail h6 {
+    margin: auto 0;
+    padding: auto 0;
+}
+
+.payment-row{
+    height: 450px;
+    overflow-y: scroll;
 }

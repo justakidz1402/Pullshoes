@@ -16,7 +16,7 @@
 	<!-- style css -->
 	<link rel="stylesheet" href="css/style.css">
 	<!-- fevicon -->
-	<link rel="icon" href="images/fevicon.png" type="image/gif" />
+	<link rel="icon" href="images/icons8-sneaker-96.png" type="image/gif" />
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
@@ -65,6 +65,11 @@
 								data-target="#myModal" title="login">
 								<i class="fa fa-user"></i>
 							</button>
+
+							<button type="button" class="btn btnLogin btn-primary" data-toggle="modal"
+								data-target="#payment" title="login">
+								<i class="fa fa-history"></i>
+							</button>
 						</div>
 					</nav>
 				</div>
@@ -90,9 +95,9 @@
 					</div>
 					<div id="cart-items" class="cart-items">
 					</div>
-					<div class="cart-total">
-						<strong class="cart-total-title">Total: </strong>
-						<span class="cart-total-price" id="total-price">0</span>$
+					<div class="cart-total align-items-center">
+						<strong class="cart-total-title align-items-center">Total: </strong>
+						<span class="cart-total-price align-items-center" id="total-price">0</span>$
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -217,6 +222,115 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Alert -->
+	<div class="modal fade alert-modal" id="BuySuccess" tabindex="-1" aria-labelledby="exampleModalLabel"
+		aria-hidden="true" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="alert alert-success" role="alert">
+				Buy successfully! Thank you for your order.
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade alert-modal" id="existedShoe" tabindex="-1" aria-labelledby="exampleModalLabel"
+		aria-hidden="true" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="alert alert-danger" role="alert">
+				This product is already in your cart!
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade alert-modal" id="BuyFail" tabindex="-1" aria-labelledby="exampleModalLabel"
+		aria-hidden="true" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="alert alert-warning" role="alert">
+				Your cart is empty! Please fill your cart before order.
+			</div>
+		</div>
+	</div>
+
+	<!-- History Payment -->
+	<div class="modal fade" id="payment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header cart-header1">
+					<h5 class="modal-title" id="exampleModalLabel">Your Payment</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="payment-row">
+						<table class="payment-table">
+							<tr>
+								<th>Time</th>
+								<th>Product</th>
+								<th>Total - Delete</th>
+							</tr>
+							<tbody id="payment-detail">
+								<tr>
+									<td rowspan="3">Ô cha</td>
+									<td class="payment-detail">
+										<img src="images/shoes-img13.png" alt="">
+										<h6>Black Red Shoe</h6>
+										<h6>Quantity: 2</h6>
+										<h6>Price: 2</h6>
+									</td>
+									<td rowspan="3">200$ 
+										<button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
+									</td>
+								</tr>
+								<tr>
+									<td class="payment-detail">
+										<img src="images/shoes-img13.png" alt="">
+										<h6>Black Red Shoe</h6>
+										<h6>Quantity: 2</h6>
+										<h6>Price: 2</h6>
+									</td>
+								</tr>
+								<tr>
+									<td class="payment-detail">
+										<img src="images/shoes-img13.png" alt="">
+										<h6>Black Red Shoe</h6>
+										<h6>Quantity: 2</h6>
+										<h6>Price: 2</h6>
+									</td>
+								</tr>
+
+								<tr>
+									<td rowspan="2">Ô cha 2</td>
+									<td class="payment-detail">
+										<img src="images/shoes-img12.png" alt="">
+										<h6>Black Red Shoe</h6>
+										<h6>Quantity: 2</h6>
+										<h6>Price: 2</h6>
+									</td>
+									<td rowspan="2">200$ 
+										<button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
+									</td>
+								</tr>
+								<tr>
+									<td class="payment-detail">
+										<img src="images/shoes-img12.png" alt="">
+										<h6>Black Red Shoe</h6>
+										<h6>Quantity: 2</h6>
+										<h6>Price: 2</h6>
+									</td>
+								</tr>
+							
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
@@ -382,8 +496,7 @@
 							<button onclick="Search()">Search</button>
 						</div>
 						<div id="buttons">
-							<button class="filter button-value activeShoes" onclick="Filter('all')"
-								id="all">All</button>
+							<button class="filter button-value activeShoes" onclick="reset()" id="all">All</button>
 							<button class="filter button-value" onclick="Filter('grey')" id="grey">
 								Grey
 							</button>
