@@ -1441,26 +1441,33 @@ th, td{
     text-align: center !important;
 }
 
-.payment-table {
-    width: 100% !important;
-}
-
+/* 
 .payment-detail img {
     width: 60px;
 }
 
-.payment-detail {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
+
 
 .payment-detail h6 {
     margin: auto 0;
     padding: auto 0;
 }
+*/
+.payment-table {
+    width: 100% !important;
+}
 
 .payment-row{
     height: 450px;
     overflow-y: scroll;
+} 
+
+.payment-detail img{
+    width: 60px;
+}
+
+.payment-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

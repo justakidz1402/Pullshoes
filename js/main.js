@@ -34,7 +34,7 @@ let listProduct = [
     new Shoe(6, "Blue Green Shoes", "90", "images/shoes-img9.png", 'all blue green'),
     new Shoe(7, "Neon Pink Shoes", "100", "images/shoes-img12.png", 'all neon'),
     new Shoe(8, "Green Yellow Shoes", "80", "images/shoes-img13.png", 'all green'),
-    new Shoe(9, "Blue Green Shoes", "110", "images/shoes-img14.png", 'all blue green')
+    new Shoe(9, "Green Blue Shoes", "110", "images/shoes-img14.png", 'all blue green')
 ];
 
 let render = (listProduct = []) => {
@@ -187,7 +187,7 @@ let AddToCart = (title, price, image) => {
 var order = document.getElementsByClassName("order")[0];
 order.onclick = function () {
     historyPay();
-    showPayment(data);
+    document.getElementById('payment-detail').innerHTML = renderData();
 }
 
 // xóa cart
@@ -243,30 +243,39 @@ let historyPay = () => {
     }
 }
 
-// id, title, price, image, quantity
-let showPayment = (data = []) => {
-    let row = ``;
-    data.map(({ product, time, total }) => {
-        row += `<tr>
-        <td rowspan="${product}">${time}</td>
-        <td class="payment-detail">
-            <img src="${product}" alt="">
-            <h6>${product}</h6>
-            <h6>Quantity: ${product}</h6>
-            <h6>Price: ${product}</h6>
-        </td>
-        <td rowspan="${product}">${total}$
-            <button class="btn btn-danger" onclick="removePayment('${time}')" type="button"><i class="fa fa-trash"></i></button>
-        </td>
-    </tr>
-        `
-    })
-    document.getElementById('payment-detail').innerHTML = row;
+const renderData = () => {
+  return (
+    `
+      <tbody>
+        ${data.map((data) => {
+          return (
+            `<tr>
+              <td>${data.time}</td>
+              <td>
+                <ul class="m-0">
+                  ${data.product.map((product) => {
+                    return `<li class="payment-detail align-items-center my-2"><img src="${product.image}" alt=""> <h6>${product.title}</h6> <h6>Quantity: ${product.quantity}</h6></li>`
+                  }).join('')}
+                </ul>
+              </td>
+              <td>
+                <h6 class='mt-3'>${data.total}$</h6>
+                <button class="btn btn-danger mb-3" type="button" onclick="removePayment('${data.time}')">
+                    <i class="fa fa-trash"></i>
+                </button>
+                </td>
+            </tr>`
+          )
+        }).join('')}
+      </tbody>
+    `
+  );
 }
-showPayment(data);
+
+document.getElementById('payment-detail').innerHTML = renderData();
 
 let removePayment = (x) => {
     data = data.filter(e => e.time !== x);
     localStorage.setItem('myPayment', JSON.stringify(data));
-    showPayment(data);
+    document.getElementById('payment-detail').innerHTML = renderData();
 }
