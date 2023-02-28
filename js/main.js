@@ -143,7 +143,7 @@ let Save = () => {
     console.log(product);
     //gọi hàm kiểm tra tồn tại đối tượng 'product' trong listProduct
     let findRs = (id) => listProduct.find(e => e.id == id);
-    if (findRs(product.id) == undefined) {
+    if (findRs(product.id) == undefined && id !=NaN && productName !='' && img !='images/shoes-img.png' && cate != 'all '&& price !=NaN) {
         listProduct.push(product);
         localStorage.setItem('product', JSON.stringify(listProduct));
         listProduct.splice(0, listCart.length);
@@ -153,6 +153,11 @@ let Save = () => {
             $('#addSuccess').modal('hide');
         }, 1500);
         reset();
+    } else if (id ==NaN || productName ==null || img =='images/shoes-img.png' || cate == 'all ' || price ==NaN){
+        $('#fillIn').modal('show');
+        setTimeout(() => {
+            $('#fillIn').modal('hide');
+        }, 1500);
     } else {
         $('#existedID').modal('show');
         setTimeout(() => {
@@ -164,7 +169,7 @@ let Save = () => {
 }
 
 let DeleteProduct = (x) => {
-    if (confirm("Do you want to delete this student")) {
+    if (confirm("Do you want to delete this Product")) {
         const index = listProduct.findIndex(e => e.id === x);
         if (index !== -1) {
             listProduct = listProduct.filter(e => e.id !== x);

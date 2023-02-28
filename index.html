@@ -308,6 +308,15 @@
 		</div>
 	</div>
 
+	<div class="modal fade alert-modal" id="fillIn" tabindex="-1" aria-labelledby="exampleModalLabel"
+		aria-hidden="true" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="alert alert-danger" role="alert">
+				Please provide the Product's Infomation!
+			</div>
+		</div>
+	</div>
+
 	<!-- History Payment -->
 	<div class="modal fade" id="payment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
@@ -639,30 +648,30 @@
 							<div class="email_box" style="height: 479.5px;">
 								<div class="input_main">
 									<div class="container">
-										<form action="/action_page.php">
+										<form>
 											<div class="form-group">
 												<input type="number" class="email-bt" placeholder="Enter ID"
-													aria-label="input" name="id" id="idProduct">
+													aria-label="input" name="id" id="idProduct" required>
 											</div>
 											<div class="form-group">
 												<input type="text" class="email-bt" placeholder="Enter Name"
-													aria-label="input" name="name" id="nameProduct">
+													aria-label="input" name="name" id="nameProduct" required>
 											</div>
 											<div class="form-group">
 												<input type="number" class="email-bt" placeholder="Enter Price"
-													aria-label="input" name="price" id="priceProduct" step="10">
+													aria-label="input" name="price" id="priceProduct" step="10" required>
 											</div>
 											<div class="form-group">
 												<input type="number" class="email-bt" placeholder="Enter Image Source"
-													name="img" aria-label="input" id="imgProduct">
+													name="img" aria-label="input" id="imgProduct" required>
 											</div>
 											<div class="form-group">
 												<input type="text" class="email-bt" placeholder="Enter Category"
-													name="cate" aria-label="input" id="cateProduct">
+													name="cate" aria-label="input" id="cateProduct" required>
 											</div>
 										</form>
 									</div>
-									<div class="send_btn mt-5 ml-3">
+									<div class="send_btn mt-4 ml-3">
 										<button class="main_bt" id="addbtn" onclick="Save()"
 											style="display: block;">Submit</button>
 										<button class="main_bt" id="editbtn" onclick="Update()"
