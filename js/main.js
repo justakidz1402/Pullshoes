@@ -284,6 +284,12 @@ let Search = () => {
     let name = document.getElementById("search-input").value;
     let searchList = listProduct.filter(e => (e.productName).toLowerCase().includes(name.toLowerCase()));
     render(searchList);
+    const buttons = document.querySelectorAll(".filter");
+    for (const other of buttons) {
+        if (other !== this) {
+            other.classList.remove("activeShoes");
+        }
+    }
     return searchList;
 }
 
