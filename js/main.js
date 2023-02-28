@@ -5,8 +5,9 @@ function getCategories(x) {
     document.getElementById('shoesKidz').classList.remove('activeTabKidz')
     document.getElementById('bootsKidz').classList.remove('activeTabKidz')
     document.getElementById('contactKidz').classList.remove('activeTabKidz')
+    document.getElementById('crudKidz').classList.remove('activeTabKidz')
     document.getElementById(x).classList.add("activeTabKidz")
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 6; i++) {
         document.getElementsByClassName('categoryKidz')[i].style.display = 'none';
     }
     for (var i = 0; i < document.getElementsByClassName(x).length; i++) {
@@ -24,18 +25,19 @@ class Shoe {
         this.category = category;
     }
 }
-
-let listProduct = [
-    new Shoe(1, 'White Grey Shoes', "60", "images/shoes-img10.png", 'all grey'),
-    new Shoe(2, "Purple Neon Shoes", "400", "images/shoes-img5.png", 'all purple neon'),
-    new Shoe(3, "Green Red Shoes", "50", "images/shoes-img11.png", 'all green'),
-    new Shoe(4, "Black Grey Shoes", "70", "images/shoes-img7.png", 'all black grey'),
-    new Shoe(5, "Black Purple Shoes", "100", "images/running-shoes.png", 'all black purple'),
-    new Shoe(6, "Blue Green Shoes", "90", "images/shoes-img9.png", 'all blue green'),
-    new Shoe(7, "Neon Pink Shoes", "100", "images/shoes-img12.png", 'all neon'),
-    new Shoe(8, "Green Yellow Shoes", "80", "images/shoes-img13.png", 'all green'),
-    new Shoe(9, "Green Blue Shoes", "110", "images/shoes-img14.png", 'all blue green')
-];
+let listProduct = JSON.parse(localStorage.getItem('product'));
+// let listProduct = [
+//     new Shoe(1, 'White Grey Shoes', "60", "images/shoes-img10.png", 'all grey'),
+//     new Shoe(2, "Purple Neon Shoes", "400", "images/shoes-img5.png", 'all purple neon'),
+//     new Shoe(3, "Green Red Shoes", "50", "images/shoes-img11.png", 'all green'),
+//     new Shoe(4, "Black Grey Shoes", "70", "images/shoes-img7.png", 'all black grey'),
+//     new Shoe(5, "Black Purple Shoes", "100", "images/running-shoes.png", 'all black purple'),
+//     new Shoe(6, "Blue Green Shoes", "90", "images/shoes-img9.png", 'all blue green'),
+//     new Shoe(7, "Neon Pink Shoes", "100", "images/shoes-img12.png", 'all neon'),
+//     new Shoe(8, "Green Yellow Shoes", "80", "images/shoes-img13.png", 'all green'),
+//     new Shoe(9, "Green Blue Shoes", "110", "images/shoes-img14.png", 'all blue green')
+// ];
+// localStorage.setItem('product', JSON.stringify(listProduct));
 
 let render = (listProduct = []) => {
     let boxProduct = ``;
@@ -107,12 +109,174 @@ let render = (listProduct = []) => {
 }
 render(listProduct);
 
+//CRUD
+let crud = (listProduct = []) => {
+    let boxProduct = ``;
+    listProduct.map(({ id, productName, price, image, category }) => {
+        let cate = category.replace("all ", "");
+        boxProduct += `
+        <tr class='my-tr' onClick='highLightRow(${id})' id='a${id}'>
+            <th scope="row" style="color:black">${id}</th>
+            <td><img src="${image}" alt=""></td>
+            <td>${productName}</td>
+            <td>${price}$</td>
+            <td>${cate}</td>
+            <td>
+                <button class="btn btn-danger" type="button" onclick="DeleteProduct(${id})">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+        `
+    })
+    document.getElementById('manageProduct').innerHTML = boxProduct;
+}
+crud(listProduct);
+
+let Save = () => {
+    let id = parseInt(document.getElementById('idProduct').value);
+    let productName = validateInput(document.getElementById('nameProduct').value);
+    let price = parseInt(document.getElementById('priceProduct').value);
+    let img = "images/shoes-img" + document.getElementById('imgProduct').value + ".png";
+    let cate = "all " + (document.getElementById('cateProduct').value).toLowerCase().trim();
+    let product = new Shoe(id, productName, price, img, cate);
+    console.log(product);
+    //gọi hàm kiểm tra tồn tại đối tượng 'product' trong listProduct
+    let findRs = (id) => listProduct.find(e => e.id == id);
+    if (findRs(product.id) == undefined) {
+        listProduct.push(product);
+        localStorage.setItem('product', JSON.stringify(listProduct));
+        listProduct.splice(0, listCart.length);
+        crud(listProduct);
+        $('#addSuccess').modal('show');
+        setTimeout(() => {
+            $('#addSuccess').modal('hide');
+        }, 1500);
+        reset();
+    } else {
+        $('#existedID').modal('show');
+        setTimeout(() => {
+            $('#existedID').modal('hide');
+        }, 1500);
+        highLightRow(product.id)
+        document.getElementById('idProduct').focus();
+    }
+}
+
+let DeleteProduct = (x) => {
+    if (confirm("Do you want to delete this student")) {
+        const index = listProduct.findIndex(e => e.id === x);
+        if (index !== -1) {
+            listProduct = listProduct.filter(e => e.id !== x);
+            // decrease id of remaining items
+            listProduct.forEach((e, i) => {
+                if (e.id > x) {
+                    e.id--;
+                }
+            });
+        }
+        localStorage.setItem('product', JSON.stringify(listProduct));
+        reset();
+        crud(listProduct);
+    }
+}
+
+let highLightRow = (id) => {
+    //lấy student theo id
+    let product = listProduct.find(s => s.id === id);
+    //gán dữ liệu vào các form control
+    document.getElementById("idProduct").value = product.id;
+    document.getElementById("nameProduct").value = product.productName;
+    document.getElementById("priceProduct").value = product.price;
+    document.getElementById("imgProduct").value = parseInt(product.image.replace(/[^\d.]/g, ''));
+    document.getElementById("cateProduct").value = product.category.replace("all ", "");
+    selectedIndex = product.id - 1;
+    document.getElementById("editbtn").style.display = "block";
+    document.getElementById("addbtn").style.display = "none";
+
+    // Thêm class "active" vào div được click
+    $(`#a${id}`).addClass('bg-secondary');
+    // Loại bỏ class "active" khỏi tất cả các div
+    const trs = document.querySelectorAll(".my-tr");
+    for (const tr of trs) {
+        tr.addEventListener("click", function () {
+            for (const other of trs) {
+                if (other !== this) {
+                    other.classList.remove("bg-secondary");
+                }
+            }
+        });
+    }
+}
+
+let Update = () => {
+    listProduct[selectedIndex].productName = validateInput(document.getElementById('nameProduct').value);
+    listProduct[selectedIndex].price = parseInt(document.getElementById('priceProduct').value);
+    listProduct[selectedIndex].image = "images/shoes-img" + document.getElementById('imgProduct').value + ".png";
+    listProduct[selectedIndex].category = "all " + (document.getElementById('cateProduct').value).toLowerCase().trim();
+    localStorage.setItem('product', JSON.stringify(listProduct));
+    crud(listProduct);
+    $('#editSuccess').modal('show');
+    setTimeout(() => {
+        $('#editSuccess').modal('hide');
+    }, 1500);
+    document.getElementById("editbtn").style.display = "none";
+    document.getElementById("addbtn").style.display = "block";
+    reset();
+}
+
+const max = Math.max(...listProduct.map(e => e.price));
+document.getElementById('txtTo').value = max;
+document.getElementById('txtTo').max = max;
+const min = Math.min(...listProduct.map(e => e.price));
+document.getElementById('txtFrom').value = min;
+document.getElementById('txtFrom').min = min;
+document.getElementById('priceProduct').value = min;
+document.getElementById('priceProduct').min = min;
+document.getElementById('priceProduct').max = max;
+let SearchManage = () => {
+    let from = parseInt(document.querySelector('#txtFrom').value);
+    let to = parseInt(document.querySelector('#txtTo').value);
+    let name = document.getElementById("search-manage").value;
+
+    let searchList = [];
+    let searchList1 = [];
+    if (name == null || name == '') {
+        searchList = listProduct.filter(e => e.price >= from && e.price <= to);
+    } else {
+        searchList1 = listProduct.filter(e => e.price >= from && e.price <= to);
+        searchList = searchList1.filter(e => (e.productName).toLowerCase().includes(name.toLowerCase()));
+    }
+    crud(searchList);
+}
+
+let validateInput = (x) => {
+    return x
+        .trim() // loại bỏ các khoảng trắng ở đầu và cuối câu
+        .split(/\s+/) // tách câu thành các từ và loại bỏ các khoảng trắng dư thừa
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // viết hoa chữ cái đầu của mỗi từ
+        .join(" "); // ghép lại các từ thành một câu với một khoảng trắng giữa các từ
+}
+
 
 //Filter and Search
 let Filter = (x) => {
     let FilterList = listProduct.filter(e => (e.category).toLowerCase().includes(x.toLowerCase()));
     let result = FilterList.filter(value => Search().includes(value));
     render(result);
+    // Thêm class "active" vào div được click
+    $("#" + x).addClass('activeShoes');
+    // Loại bỏ class "active" khỏi tất cả các div
+    const buttons = document.querySelectorAll(".filter");
+    for (const button of buttons) {
+        button.addEventListener("click", function () {
+            for (const other of buttons) {
+                if (other !== this) {
+                    other.classList.remove("activeShoes");
+                }
+            }
+        });
+    }
     return FilterList;
 }
 
@@ -124,8 +288,19 @@ let Search = () => {
 }
 
 let reset = () => {
+    document.getElementById('idProduct').value = '';
+    document.getElementById('txtTo').value = max;
+    document.getElementById('txtFrom').value = min;
+    document.getElementById('nameProduct').value = "";
+    document.getElementById('priceProduct').value = min;
+    document.getElementById('imgProduct').value = "";
+    document.getElementById('cateProduct').value = "";
     document.getElementById('search-input').value = "";
+    document.getElementById("search-manage").value = "";
+    document.getElementById("editbtn").style.display = "none";
+    document.getElementById("addbtn").style.display = "block";
     render(listProduct);
+    crud(listProduct);
 }
 
 // Login
@@ -185,9 +360,13 @@ let AddToCart = (title, price, image) => {
 }
 
 var order = document.getElementsByClassName("order")[0];
-order.onclick = function () {
-    historyPay();
+order.onclick = async function () {
+    historyPay()
     document.getElementById('payment-detail').innerHTML = renderData();
+    setTimeout(reload, 1800);
+    function reload() {
+        window.location.reload();
+    }
 }
 
 // xóa cart
@@ -244,18 +423,22 @@ let historyPay = () => {
 }
 
 const renderData = () => {
-  return (
-    `
+    return (
+        `
       <tbody>
         ${data.map((data) => {
-          return (
-            `<tr>
-              <td>${data.time}</td>
+            return (
+                `<tr>
+              <th scope="row">${data.time}</th>
               <td>
-                <ul class="m-0">
+                <ul class="mx-0 my-2">
                   ${data.product.map((product) => {
-                    return `<li class="payment-detail align-items-center my-2"><img src="${product.image}" alt=""> <h6>${product.title}</h6> <h6>Quantity: ${product.quantity}</h6></li>`
-                  }).join('')}
+                    return `<li class="payment-detail align-items-center my-2">
+                    <div style="width: 25%;"><img src="${product.image}" alt=""></div>
+                    <div style="width: 50%; display: flex; justify-content: flex-start;"><h6>${product.title}</h6> </div>
+                    <div style="width: 25%; display: flex; justify-content: flex-start;"><h6>Quantity: ${product.quantity}</h6></div>
+                    </li>`
+                }).join('')}
                 </ul>
               </td>
               <td>
@@ -264,14 +447,14 @@ const renderData = () => {
                     <i class="fa fa-trash"></i>
                 </button>
                 </td>
-            </tr>`
-          )
+            </tr>
+            </hr>`
+            )
         }).join('')}
       </tbody>
     `
-  );
+    );
 }
-
 document.getElementById('payment-detail').innerHTML = renderData();
 
 let removePayment = (x) => {

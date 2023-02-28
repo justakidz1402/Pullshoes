@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap');
 * {
     box-sizing: border-box !important;
     transition: ease all 0.5s;
     border: none;
     outline: none;
+    font-family: 'Shantell Sans', cursive;
 }
 
 html {
@@ -1430,29 +1429,10 @@ Search */
 }
 
 /*History Payment*/
-table,
-th,
-td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
 th, td{
     text-align: center !important;
 }
 
-/* 
-.payment-detail img {
-    width: 60px;
-}
-
-
-
-.payment-detail h6 {
-    margin: auto 0;
-    padding: auto 0;
-}
-*/
 .payment-table {
     width: 100% !important;
 }
@@ -1470,4 +1450,18 @@ th, td{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/*CRUD*/
+.management th {
+    color: white;
+}
+
+.table-manage{
+    height: 479.5px;
+    overflow-y: scroll;
+}
+
+.my-tr{
+    height: 86px;
 }

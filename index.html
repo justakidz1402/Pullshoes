@@ -20,6 +20,9 @@
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap" rel="stylesheet">
 </head>
 <!-- body -->
 
@@ -28,11 +31,11 @@
 	<div class="header_section header_main py-0">
 		<div class="container">
 			<div class="row d-flex justify-content-around align-items-center">
-				<div class="col-sm-3">
+				<div class="col-sm-2 p-0">
 					<div class="logo" onclick="getCategories('homeKidz')"><img src="images/logo.png" alt="hi"
 							style="height: 30px;"></div>
 				</div>
-				<div class="col-sm-9">
+				<div class="col-sm-8 p-0">
 					<nav class="navbar navbar-expand-lg py-0">
 						<button class="navbar-toggler" type="button" data-toggle="collapse"
 							data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
@@ -40,7 +43,7 @@
 							<span class="navbar-toggler-icon"></span>
 						</button>
 						<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-							<div class="navbar-nav tabContainer" style="margin-right: 150px; height: 50px;">
+							<div class="navbar-nav tabContainer" style="height: 50px;">
 								<div id="homeKidz" class="nav-item nav-link activeTabKidz tabSPA"
 									onclick="getCategories('homeKidz')">Home</div>
 								<div id="collectionKidz" class="nav-item tabSPA nav-link"
@@ -54,24 +57,29 @@
 								<div id="contactKidz" class="nav-item tabSPA nav-link"
 									onclick="getCategories('contactKidz')">
 									Contact</div>
+
+								<div id="crudKidz" class="nav-item tabSPA nav-link" onclick="getCategories('crudKidz')">
+									Management
+								</div>
 							</div>
-
-							<button type="button" class="btn btnLogin btn-primary" data-toggle="modal"
-								data-target="#cartModal" title="search">
-								<i class="fa fa-cart-plus"></i>
-							</button>
-
-							<button type="button" class="btn btnLogin btn-primary" data-toggle="modal"
-								data-target="#myModal" title="login">
-								<i class="fa fa-user"></i>
-							</button>
-
-							<button type="button" class="btn btnLogin btn-primary" data-toggle="modal"
-								data-target="#payment" title="login">
-								<i class="fa fa-history"></i>
-							</button>
 						</div>
 					</nav>
+				</div>
+				<div class="col-sm-2 p-0">
+					<button type="button" class="btn btnLogin btn-primary" data-toggle="modal" id="cart-btn"
+						data-target="#cartModal" title="search">
+						<i class="fa fa-cart-plus"></i>
+					</button>
+
+					<button type="button" class="btn btnLogin btn-primary" data-toggle="modal" id="user-btn"
+						data-target="#myModal" title="login">
+						<i class="fa fa-user"></i>
+					</button>
+
+					<button type="button" class="btn btnLogin btn-primary" data-toggle="modal" id="payment-btn"
+						data-target="#payment" title="login">
+						<i class="fa fa-history"></i>
+					</button>
 				</div>
 			</div>
 		</div>
@@ -255,6 +263,51 @@
 		</div>
 	</div>
 
+	<div class="modal fade alert-modal" id="loginAlert" tabindex="-1" aria-labelledby="exampleModalLabel"
+		aria-hidden="true" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="alert alert-success" role="alert">
+				User Logged In Successfully!
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade alert-modal" id="signinAlert" tabindex="-1" aria-labelledby="exampleModalLabel"
+		aria-hidden="true" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="alert alert-success" role="alert">
+				User Created Successfully!
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade alert-modal" id="addSuccess" tabindex="-1" aria-labelledby="exampleModalLabel"
+		aria-hidden="true" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="alert alert-success" role="alert">
+				Add product successfully!
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade alert-modal" id="existedID" tabindex="-1" aria-labelledby="exampleModalLabel"
+		aria-hidden="true" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="alert alert-danger" role="alert">
+				This Product ID is already existed!
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade alert-modal" id="editSuccess" tabindex="-1" aria-labelledby="exampleModalLabel"
+		aria-hidden="true" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="alert alert-success" role="alert">
+				Edit product successfully!
+			</div>
+		</div>
+	</div>
+
 	<!-- History Payment -->
 	<div class="modal fade" id="payment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
@@ -267,14 +320,14 @@
 				</div>
 				<div class="modal-body">
 					<div class="payment-row">
-						<table class="payment-table" >
+						<table class="payment-table table table-striped">
 							<thead>
 								<tr>
-								  <th style="width: 133px;">Time</th>
-								  <th>Products</th>
-								  <th style="width: 66px;">Total</th>
+									<th scope="col" style="width: 133px;">Time</th>
+									<th scope="col">Products</th>
+									<th scope="col" style="width: 66px;">Total</th>
 								</tr>
-							  </thead>
+							</thead>
 							<tbody id="payment-detail">
 							</tbody>
 						</table>
@@ -286,8 +339,9 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- header section end -->
+
+	<!-- section body start -->
 	<div class="listCategoryKidz">
 		<!-- Home Page -->
 		<div class="categoryKidz homeKidz" id="home-page">
@@ -312,8 +366,8 @@
 															sed do eiusmod tempor incididunt ut labore et dolore magna
 															aliqua.
 														</p>
-														<button class="buy_bt">Buy Now</button>
-														<button class="more_bt">See More</button>
+														<button data-toggle="modal" data-target="#cartModal" class="buy_bt">Buy Now</button>
+														<button onclick="getCategories('shoesKidz')" class="more_bt">See More</button>
 													</div>
 												</div>
 												<div class="col-sm-5">
@@ -335,8 +389,8 @@
 															sed do eiusmod tempor incididunt ut labore et dolore magna
 															aliqua.
 														</p>
-														<button class="buy_bt">Buy Now</button>
-														<button class="more_bt">See More</button>
+														<button data-toggle="modal" data-target="#cartModal" class="buy_bt">Buy Now</button>
+														<button onclick="getCategories('shoesKidz')" class="more_bt">See More</button>
 													</div>
 												</div>
 												<div class="col-sm-5">
@@ -358,8 +412,8 @@
 															sed do eiusmod tempor incididunt ut labore et dolore magna
 															aliqua.
 														</p>
-														<button class="buy_bt">Buy Now</button>
-														<button class="more_bt">See More</button>
+														<button data-toggle="modal" data-target="#cartModal" class="buy_bt">Buy Now</button>
+														<button onclick="getCategories('shoesKidz')" class="more_bt">See More</button>
 													</div>
 												</div>
 												<div class="col-sm-5">
@@ -447,7 +501,7 @@
 							<button onclick="Search()">Search</button>
 						</div>
 						<div id="buttons">
-							<button class="filter button-value activeShoes" onclick="reset()" id="all">All</button>
+							<button class="filter button-value" onclick="Filter('all')" id="all">All</button>
 							<button class="filter button-value" onclick="Filter('grey')" id="grey">
 								Grey
 							</button>
@@ -559,8 +613,86 @@
 				</div>
 			</div>
 		</div>
-	</div>
 
+		<!-- CRUD Page -->
+		<div class="categoryKidz crudKidz" style="display: none;">
+			<div class="collection_text">Product Management</div>
+			<div class="layout_padding contact_section">
+				<div class="container">
+					<h1 class="new_text col-6"><strong>Add/Edit Product</strong></h1>
+					<div class="form-inline my-2 my-lg-0 col-6">
+						<input class="form-control mr-sm-2 col-3" type="search" placeholder="Search" aria-label="Search"
+							id="search-manage">
+						From: <input class="ml-1 form-control mr-sm-2 col-2" type="number" aria-label="From"
+							id="txtFrom" step="50">
+						To: <input class="ml-1 form-control mr-sm-2 col-2" type="number" aria-label="To" id="txtTo"
+							step="50">
+						<button class="btn btn-outline-secondary my-2 my-sm-0 col-1 align-items-center" type="submit"
+							onclick="SearchManage()"><i class="fa fa-search"></i></button>
+						<button class="ml-1 btn btn-outline-secondary my-2 my-sm-0 col-1 align-items-center"
+							type="submit" onclick="reset()"><i class="fa fa-rotate-left"></i></button>
+					</div>
+				</div>
+				<div class="container-fluid ram">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="email_box" style="height: 479.5px;">
+								<div class="input_main">
+									<div class="container">
+										<form action="/action_page.php">
+											<div class="form-group">
+												<input type="number" class="email-bt" placeholder="Enter ID"
+													aria-label="input" name="id" id="idProduct">
+											</div>
+											<div class="form-group">
+												<input type="text" class="email-bt" placeholder="Enter Name"
+													aria-label="input" name="name" id="nameProduct">
+											</div>
+											<div class="form-group">
+												<input type="number" class="email-bt" placeholder="Enter Price"
+													aria-label="input" name="price" id="priceProduct" step="10">
+											</div>
+											<div class="form-group">
+												<input type="number" class="email-bt" placeholder="Enter Image Source"
+													name="img" aria-label="input" id="imgProduct">
+											</div>
+											<div class="form-group">
+												<input type="text" class="email-bt" placeholder="Enter Category"
+													name="cate" aria-label="input" id="cateProduct">
+											</div>
+										</form>
+									</div>
+									<div class="send_btn mt-5 ml-3">
+										<button class="main_bt" id="addbtn" onclick="Save()"
+											style="display: block;">Submit</button>
+										<button class="main_bt" id="editbtn" onclick="Update()"
+											style="display: none;">Edit</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 table-manage">
+							<table style="width: 100%" class="management table table-striped m-0">
+								<thead style="background-color: #db5660;">
+									<tr>
+										<th scope="col" class="col-1">ID</th>
+										<th scope="col" class="col-1">Image</th>
+										<th scope="col" class="col-5">Name</th>
+										<th scope="col" class="col-1">Price</th>
+										<th scope="col" class="col-3">Category</th>
+										<th scope="col" class="col-1"></th>
+									</tr>
+								</thead>
+								<tbody id="manageProduct">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- section body end -->
 
 	<!-- section footer start -->
 	<div class="section_footer">
@@ -647,6 +779,7 @@
 			</div>
 		</div>
 	</div>
+	<!-- section footer end -->
 
 	<!-- Javascript files-->
 	<script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
@@ -685,13 +818,10 @@
 		const database = getDatabase(app)
 
 		const submitData2 = document.querySelector('#submitData2');
-
 		//     Sign up 
 		submitData2.addEventListener('click', (e) => {
-
 			var email = document.getElementById('email2').value;
 			var password = document.getElementById('psw2').value;
-
 			// 		// check email/pass
 			function Validation() {
 				let emailregex = /^[a-zA-Z0-9]+@(gmail|yahoo|outlook)\.com$/;
@@ -717,8 +847,10 @@
 						.then((data) => {
 							console.log(data)
 							// Data saved successfully!
-							alert('user created successfully');
-
+							$('#loginAlert').modal('show');
+							setTimeout(() => {
+								$('#loginAlert').modal('hide');
+							}, 1500);
 						})
 						.catch((error) => {
 							// The write failed...
@@ -733,11 +865,10 @@
 				});
 		});
 		const submitData1 = document.querySelector('#submitData1');
-		document.getElementById("submitData1").addEventListener("click", (e)=>{
-                event.preventDefault()
-                });
+		document.getElementById("submitData1").addEventListener("click", (e) => {
+			event.preventDefault()
+		});
 		submitData1.addEventListener('click', (e) => {
-
 			var email1 = document.getElementById('email1').value;
 			var password1 = document.getElementById('psw1').value;
 			// log in user
@@ -745,8 +876,6 @@
 				.then((userCredential) => {
 					// Signed in
 					const user = userCredential.user;
-					// ...
-
 					// save log in details into real time database
 					var lgDate = new Date();
 					update(ref(database, 'users/' + user.uid), {
@@ -754,8 +883,11 @@
 					})
 						.then(() => {
 							// Data saved successfully!
-							alert('user logged in successfully');
-
+							$('#signinAlert').modal('show');
+							setTimeout(() => {
+								$('#signinAlert').modal('hide');
+							}, 1500);
+							$('#myModal').modal('hide');
 						})
 						.catch((error) => {
 							// The write failed...
@@ -768,6 +900,21 @@
 					alert(errorMessage);
 				});
 		});
+
+		//sign out user
+		// Lấy thẻ button logout
+		// const logoutBtn = document.getElementById('logout-btn');
+
+		// // Bắt sự kiện click vào button logout
+		// logoutBtn.addEventListener('click', function () {
+		// 	signOut(auth).then(() => {
+		// 		// Sign-out successful.
+		// 		$('#logout-btn').modal('hide');
+		// 	}).catch((error) => {
+		// 		// An error happened.
+		// 		console.log(error);
+		// 	});
+		// });
 	</script>
 </body>
 
