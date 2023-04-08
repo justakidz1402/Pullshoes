@@ -91,10 +91,10 @@ let render = (listProduct = []) => {
               <div class="description">
                   <h3>DESCRIPTION</h3>
                   <ul>
-                      <li>Apples are nutricious</li>
-                      <li>Apples may be good for weight loss</li>
-                      <li>Apples may be good for bone health</li>
-                      <li>They're linked to a lowest risk of diabetes</li>
+                      <li>Provide comfort during activity.</li>
+                      <li>Improve speed and agility.</li>
+                      <li>Prevent foot injuries.</li>
+                      <li>Colors and styles.</li>
                   </ul>
               </div>
               <button class="buy--btn btn-cart" onclick="AddToCart('${productName}','${price}','${image}')">ADD TO CART</button>
@@ -233,9 +233,11 @@ let Update = () => {
 const max = Math.max(...listProduct.map(e => e.price));
 document.getElementById('txtTo').value = max;
 document.getElementById('txtTo').max = max;
+document.getElementById('txtTo').min = max/2;
 const min = Math.min(...listProduct.map(e => e.price));
 document.getElementById('txtFrom').value = min;
 document.getElementById('txtFrom').min = min;
+document.getElementById('txtFrom').max = max/2;
 document.getElementById('priceProduct').value = min;
 document.getElementById('priceProduct').min = min;
 document.getElementById('priceProduct').max = max;

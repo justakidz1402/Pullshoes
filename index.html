@@ -65,9 +65,10 @@
 						</div>
 					</nav>
 				</div>
-				<div class="col-sm-2 p-0">
+				
+				<div class="col-sm-2 p-0" style="display: flex;"> 
 					<button type="button" class="btn btnLogin btn-primary" data-toggle="modal" id="cart-btn"
-						data-target="#cartModal" title="search">
+						data-target="#cartModal" title="cart">
 						<i class="fa fa-cart-plus"></i>
 					</button>
 
@@ -77,9 +78,17 @@
 					</button>
 
 					<button type="button" class="btn btnLogin btn-primary" data-toggle="modal" id="payment-btn"
-						data-target="#payment" title="login">
+						data-target="#payment" title="history">
 						<i class="fa fa-history"></i>
 					</button>
+					
+					<button type="submit" class="btn btnLogin btn-primary" id="logout-btn" 
+					title="logout">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+						<path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+					  </svg>
+				    </button>
 				</div>
 			</div>
 		</div>
@@ -267,7 +276,16 @@
 		aria-hidden="true" data-backdrop="static">
 		<div class="modal-dialog">
 			<div class="alert alert-success" role="alert">
-				User Logged In Successfully!
+				User Created Successfully!
+			</div>
+		</div>
+	</div>
+
+    <div class="modal fade alert-modal" id="logoutAlert" tabindex="-1" aria-labelledby="exampleModalLabel"
+		 aria-hidden="true" data-backdrop="static">
+		 <div class="modal-dialog">
+		     <div class="alert alert-success" role="alert">
+			     User Logout Successfully!
 			</div>
 		</div>
 	</div>
@@ -276,7 +294,7 @@
 		aria-hidden="true" data-backdrop="static">
 		<div class="modal-dialog">
 			<div class="alert alert-success" role="alert">
-				User Created Successfully!
+			     User Logged In Successfully!
 			</div>
 		</div>
 	</div>
@@ -800,7 +818,7 @@
 		// Import the functions you need from the SDKs you need
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 		import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
-		import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+		import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 		// TODO: Add SDKs for Firebase products that you want to use
 		// https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -908,22 +926,25 @@
 					const errorMessage = error.message;
 					alert(errorMessage);
 				});
-		});
 
+	           });
 		//sign out user
 		// Lấy thẻ button logout
-		// const logoutBtn = document.getElementById('logout-btn');
+		const logoutBtn = document.getElementById('logout-btn');
 
-		// // Bắt sự kiện click vào button logout
-		// logoutBtn.addEventListener('click', function () {
-		// 	signOut(auth).then(() => {
-		// 		// Sign-out successful.
-		// 		$('#logout-btn').modal('hide');
-		// 	}).catch((error) => {
-		// 		// An error happened.
-		// 		console.log(error);
-		// 	});
-		// });
+		// Bắt sự kiện click vào button logout
+		logoutBtn.addEventListener('click', function () {
+			signOut(auth).then(() => {
+				// Sign-out successful.
+						$('#logoutAlert').modal('show');
+							setTimeout(() => {
+						$('#logoutAlert').modal('hide');
+							}, 1500);
+			}).catch((error) => {
+				// An error happened.
+				console.log(error);
+			});
+		});
 	</script>
 </body>
 
